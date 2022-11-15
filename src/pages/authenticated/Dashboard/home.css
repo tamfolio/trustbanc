@@ -24,6 +24,7 @@
   position: relative;
   flex: 2;
   margin: 20px 50px;
+  padding: 22px 37px;
 }
 
 .btn1 {
@@ -43,7 +44,7 @@
   width: 347px;
   height: 164px;
   color: #fff;
-  padding: 10px 20px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   flex-direction: column;
