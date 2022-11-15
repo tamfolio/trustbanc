@@ -86,7 +86,7 @@ const Dashboard = () => {
     handleFetchTransactions();
   }, []);
 
-  return <div className='home'>
+  return<div className='home'>
   <a href="/" className='btn1'>MAKE A TRANSFER</a>
   <div className="topside">
   <div className="my-account">
@@ -102,14 +102,24 @@ const Dashboard = () => {
        <p>Book balance: ₦ 400,000.56</p>
      </div>
    </div>
+  </div> 
   </div>
-  <div className="frequent">
-
-  </div>
+  <div className="bottomside">
+   <div className="transactionHistory">
+     <div className="top">
+       <p>Transaction History</p>
+       <p>Download Statement</p>
+     </div>
+     <div className="bottom">
+       <div className="history-box">
+         
+       </div>
+     </div>
+   </div>
   </div>
 
   
-</div>;
+</div>
 };
 
 export default Dashboard;
