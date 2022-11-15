@@ -1,13 +1,15 @@
-import React from 'react'
+import React from "react";
+
+import MainLogo from "../../assets/logos/main-logo.svg";
 
 const SideBar = () => {
   return (
     <>
-      <div className="sidebar">
-        
+      <div className='sidebar'>
+        <img src={MainLogo} />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;
