@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './home.css';
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -85,7 +86,30 @@ const Dashboard = () => {
     handleFetchTransactions();
   }, []);
 
-  return <div className=''></div>;
+  return <div className='home'>
+  <a href="/" className='btn1'>MAKE A TRANSFER</a>
+  <div className="topside">
+  <div className="my-account">
+   <p className='account-header'>My Accounts</p>
+   <div className="account-box">
+     <div className="account-type">
+       <h3>Savings Account</h3>
+       <p>0061789943</p>
+     </div>
+     <div className="balance">
+     <h3>Available balance</h3>
+       <h5>₦ 400,000.56</h5>
+       <p>Book balance: ₦ 400,000.56</p>
+     </div>
+   </div>
+  </div>
+  <div className="frequent">
+
+  </div>
+  </div>
+
+  
+</div>;
 };
 
 export default Dashboard;

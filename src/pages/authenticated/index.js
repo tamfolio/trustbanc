@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import SideBar from "../../components/SideBar";
+import Sidebar from "../../components/SideBar/Sidebar";
 
 import Dashboard from "./Dashboard";
 
@@ -10,7 +10,7 @@ const Authenticated = () => {
     <>
       <div className='dashboard'>
         <BrowserRouter>
-          <SideBar />
+          <Sidebar />
           <Routes>
             <Route exact path='/' element={<Dashboard />} />
           </Routes>
