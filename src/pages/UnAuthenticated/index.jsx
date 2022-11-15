@@ -1,12 +1,52 @@
-import React from "react";
-import { Formik } from "formik";
+import React, { useState } from "react";
+import { Formik, isString } from "formik";
 
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 
+import { axiosData } from "../../services/axiosData";
+
 import WhiteLogo from "../../assets/logos/white-logo.svg";
 
-const unAuthenticated = () => {
+const UnAuthenticated = () => {
+  const [loginError, setLoginError] = useState("");
+
+  const handleLoginSubmit = (values, setSubmitting) => {
+    let dataToPost = JSON.stringify({
+      phoneNumber: values.email,
+      password: values.password,
+    });
+
+    fetch(
+      "https://bespoke.trustbancgroup.com/omnichannel_interview/api/authentication/loginUser",
+      {
+        method: "POST",
+        body: dataToPost,
+        headers: {
+          "access-control-allow-origin": "*",
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.responseMessage) {
+          setLoginError(response.responseMessage);
+        }
+
+        if (response.sessionID) {
+          localStorage.setItem("phoneNumber", values.email);
+          localStorage.setItem("sessionID", response.sessionID);
+          window.location.reload();
+        }
+      })
+      .catch((e) => {
+        console.log("e", e);
+      })
+      .then(() => {
+        setSubmitting(false);
+      });
+  };
   return (
     <>
       <div className='login-page'>
@@ -27,26 +67,22 @@ const unAuthenticated = () => {
           </div>
           <div className='main-login-form'>
             <p className='login-text'>Log in to your account</p>
+
+            {loginError && <div className='logginMessage'>{loginError}</div>}
             <Formik
               initialValues={{ email: "", password: "" }}
               validate={(values) => {
+                setLoginError("");
                 const errors = {};
                 if (!values.email) {
                   errors.email = "Please provide your username";
-                } else if (
-                  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                ) {
-                  errors.email = "Invalid email address";
                 } else if (!values.password) {
                   errors.password = "Please provide your password";
                 }
                 return errors;
               }}
               onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  setSubmitting(false);
-                }, 400);
+                handleLoginSubmit(values, setSubmitting);
               }}
             >
               {({
@@ -61,7 +97,7 @@ const unAuthenticated = () => {
               }) => (
                 <form className='form-grid' onSubmit={handleSubmit}>
                   <Input
-                    type={"email"}
+                    type={"text"}
                     name='email'
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -70,6 +106,7 @@ const unAuthenticated = () => {
                     placeholder='Username'
                     className='form-input'
                     error={errors.email}
+                    disabled={isSubmitting}
                   />
                   <Input
                     type='password'
@@ -81,6 +118,7 @@ const unAuthenticated = () => {
                     placeholder={"Password"}
                     className='form-input mt-12'
                     error={errors.password}
+                    disabled={isSubmitting}
                   />
                   <Button
                     variant={"btn-primary"}
@@ -88,10 +126,13 @@ const unAuthenticated = () => {
                     disabled={isSubmitting}
                     className={"mt-24"}
                   >
+                    {isSubmitting && <div class='lds-dual-ring'></div>}
                     LOGIN
                   </Button>
                   <div className='flex-end'>
-                    <a href='#' className="forgot-password-text">Forgot password?</a>
+                    <a href='#' className='forgot-password-text'>
+                      Forgot password?
+                    </a>
                   </div>
                 </form>
               )}
@@ -103,4 +144,4 @@ const unAuthenticated = () => {
   );
 };
 
-export default unAuthenticated;
+export default UnAuthenticated;

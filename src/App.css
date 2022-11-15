@@ -94,6 +94,17 @@ p.login-text {
   padding: 17px 30px;
 }
 
+.logginMessage {
+  border: 1px solid #003679;
+  color: red;
+  background-color: #00377928;
+  font-weight: 500;
+  padding: 16px;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 16px;
+}
+
 /* Buttons */
 
 .btn {
@@ -158,6 +169,32 @@ p.login-text {
 
 .mt-12 {
   margin-top: 12px;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 1188px) {
