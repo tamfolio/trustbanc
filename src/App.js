@@ -4,7 +4,7 @@ import UnAuthenticated from "./pages/UnAuthenticated";
 import Authenticated from "./pages/authenticated";
 
 function App() {
-  // localStorage.setItem("loggedIn", "xxxxxxx");
+  localStorage.setItem("loggedIn", "xxxxxxx");
 
   const token = localStorage.getItem("loggedIn");
 

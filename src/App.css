@@ -26,6 +26,17 @@ p {
   line-height: 24px;
 }
 
+.container {
+  display: flex;
+  min-height: 100vh;
+  /* margin-top: 10px; */
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .login-page {
   background-image: linear-gradient(
       to bottom,
