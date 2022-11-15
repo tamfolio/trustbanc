@@ -1,38 +1,199 @@
-.App {
-  text-align: center;
+@import url("https://fonts.cdnfonts.com/css/roboto");
+
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin: 0px;
+  font-family: "Roboto", sans-serif;
+  background-color: #e6ecf4;
+  font-size: 16px;
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  margin: 0px;
+  line-height: 24px;
+}
+
+.login-page {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 54, 121, 0.55),
+      rgba(0, 54, 121, 0.55)
+    ),
+    url("./assets/images/login-bg.svg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main-login {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  background: #ffffff;
+  box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin: auto;
+  width: 60%;
+  min-height: 500px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.login-content {
+  background: #003679;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 60px;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.login-info-text {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.main-login-form {
+  padding: 58px;
+}
+
+p.login-text {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+  text-align: center;
+  margin-top: 44px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 45px;
+}
+
+.form-input {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  padding: 17px 30px;
+}
+
+/* Buttons */
+
+.btn {
+  border-radius: 5px;
+  padding: 16px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-white {
+  background: #ffffff;
+  border: 1.5px solid #003679;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #003679;
+}
+
+.btn-primary {
+  background: rgba(0, 54, 121, 0.75);
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.input-error {
+  font-size: 14px;
+  color: rgba(255, 0, 0, 0.452);
+}
+
+.border-red {
+  border: 1px solid rgba(255, 0, 0, 0.452);
+}
+
+.forgot-password-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #09922f;
+  margin-top: 9px;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: end;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.mt-31 {
+  margin-top: 31px;
+}
+
+.mt-12 {
+  margin-top: 12px;
+}
+
+@media screen and (max-width: 1188px) {
+  .main-login {
+    width: 70%;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (max-width: 980px) {
+  .main-login {
+    grid-template-columns: 0.7fr 2fr;
+  }
+
+  .login-content {
+    padding: 30px;
+  }
+
+  .main-login-form {
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 743px) {
+  .main-login {
+    grid-template-columns: 1fr;
+  }
+
+  .login-content {
+    display: none;
+  }
+
+  .main-login-form {
+    padding: 20px;
+  }
+
+  .main-login {
+    width: 90%;
   }
 }
